@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'widget_tweaks',
+    'debug_toolbar'
 ] + get_core_apps() #from oscar
 
 SITE_ID = 1
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     #from oscar
     'oscar.apps.basket.middleware.BasketMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'frobshop.urls'
@@ -164,3 +166,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
