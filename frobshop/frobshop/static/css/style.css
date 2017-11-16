@@ -1,7 +1,50 @@
+body {
+  background-color: #FFF;
+}
+
 .accounts {
   background-color: #FF0000;
 }
 
 .navbar-default .navbar-nav > li > a {
   color: #FAFAFA;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #343434 !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #FFF;
+}
+
+#main-nav {
+  background-color: #FFF;
+}
+
+.page_inner {
+  padding: 0px !important;
+}
+
+#site-logo {
+  width: 200px;
+  height: auto;
+}
+
+#view-cart {
+  color: #FF0000;
+  font-size: 25px !important;
+}
+
+.no-stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #777777;
+    background-color: #FFF;
+    opacity: .9;
+    width: 100%;
+    padding: 20px 0;
+    font-weight: bold;
 }
