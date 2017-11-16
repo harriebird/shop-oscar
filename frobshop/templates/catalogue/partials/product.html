@@ -13,14 +13,16 @@
             <div class="image_container">
                 {% with image=product.primary_image %}
                     {% thumbnail image.original "x155" upscale=False as thumb %}
-                    {% if not session.availability.is_available_to_buy %}
-                      {% if verbose %}
-                        <div class="{{ session.availability.code }} availability text-uppercase no-stock">{{ session.availability.message }}</div>
-                      {% else %}
-                        <div class="{{ session.availability.code }} availability text-uppercase no-stock">{{ session.availability.short_message }}</div>
+                    <a href="{{ product.get_absolute_url }}">
+                      <img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="thumbnail">
+                      {% if not session.availability.is_available_to_buy %}
+                        {% if verbose %}
+                          <div class="{{ session.availability.code }} availability text-uppercase no-stock">{{ session.availability.message }}</div>
+                        {% else %}
+                          <div class="{{ session.availability.code }} availability text-uppercase no-stock">{{ session.availability.short_message }}</div>
+                        {% endif %}
                       {% endif %}
-                    {% endif %}
-                    <a href="{{ product.get_absolute_url }}"><img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="thumbnail"></a>
+                    </a>
                     {% endthumbnail %}
                 {% endwith %}
             </div>
