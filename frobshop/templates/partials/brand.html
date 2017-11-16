@@ -1,0 +1,6 @@
+{% load static %}
+<div class="container">
+  <a href="{% url 'shoprep:index'%}">
+    {% block brand_title %}<img src="{% static 'images/shoplocal-site-logo.png' %}" id="site-logo">{% endblock %}
+  </a>
+</div>
