@@ -1,5 +1,8 @@
 body {
   background-color: #FFF;
+  color: #777;
+	-moz-osx-font-smoothing: grayscale;
+
 }
 
 .accounts {
@@ -41,10 +44,115 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #777777;
+    color: #312F2E;
     background-color: #FFF;
     opacity: .9;
     width: 100%;
     padding: 20px 0;
     font-weight: bold;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
+.valign {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+/* outline buttons */
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
+
+.samp {
+  padding-top: 30px;
+  line-height: 1.5;
+  /*color: #555555 !important;*/
+}
+
+.samp img {
+  margin-bottom: 20px;
+}
+.samp-text {
+  color: #777 !important;
+  font-size: 1.15em;
+}
+
+.soft-emboss {
+	text-shadow: 2px 8px 6px rgba(0,0,0,0.2),0px -5px 35px rgba(255,255,255,0.3);
+}
+
+.banner {
+  color: #FFFFFF !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/images/shoplocal-homepage.jpg);
+	background-size: cover !important;
+	background-repeat: no-repeat !important;
+	background-position: 50% 50%;
+  background-attachment: fixed;
+}
+
+.banner-content {
+  width: 60%;
+  padding: 30px;
+  font-size: 16px;
+}
+
+.banner h2, .banner h3, .banner h1 {
+	padding: 0;
+	margin-top: .2em;
+	margin-bottom: .2em;
+	line-height: 1.10;
+}
+
+.banner h2 {
+  font-weight: 500;
+	font-size: 2.9em;
+}
+
+.banner h5 {
+  font-size: 1em;
+  font-weight: bolder;
+}
+
+.banner h1 {
+	font-size: 3.5em;
+  font-weight: 500 !important;
+}
+
+.banner a {
+  font-weight: bold;
 }

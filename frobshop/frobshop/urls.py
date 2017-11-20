@@ -24,8 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #from oscar
     url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^shop/', include(application.urls)),
-    url(r'^$', include('shoprep.urls'))
+    url(r'', include(application.urls)),
+    # url(r'^$', include('shoprep.urls'))
 ]
 
 #from api

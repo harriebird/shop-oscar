@@ -4,20 +4,14 @@
 
 <div class="navbar navbar-static-top navbar-inverse text-uppercase" id="main-nav">
     <div class="container-fluid">
-        <div class="navbar-header pull-right">
+        <div class="navbar-header pull-left">
             {# This is used in mobile view #}
             <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".primary-collapse">
-                <span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </span>
+              <i class="icon-reorder"></i>
             </a>
         </div>
-
         <a class="btn btn-default navbar-btn btn-cart navbar-right visible-xs-inline-block" href="{% url 'basket:summary' %}">
-            <i class="icon-shopping-cart"></i>
-            {% trans "Basket" %}
+            <i class="icon-shopping-cart" id="view-cart"></i>
             {% if not request.basket.is_empty %}
                 {% if request.basket.is_tax_known %}
                     {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}
@@ -30,12 +24,10 @@
                 {% endif %}
             {% endif %}
         </a>
-
-
         <div class="navbar-collapse primary-collapse collapse">
             {% block nav_dropdown %}
-                <ul id="browse" class="nav navbar-nav">
-                    <li class="navbar-item"><a href="{% url 'shoprep:index' %}">Home</a></li>
+                <ul id="browse" class="nav navbar-nav navbar-left">
+                    <li class="navbar-item"><a href="{{ homepage_url }}">Home</a></li>
                     <li><a href="{% url 'catalogue:index' %}">All products</a></li>
                     <li class="dropdown {% if expand_dropdown %}open{% endif %}">
                         <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>
@@ -68,6 +60,28 @@
                     </li>
                     {% block nav_extra %}
                     {% endblock %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li>
+                            {% if num_unread_notifications > 0 %}
+                                {# If user has new notifications - we change account link to go to inbox #}
+                                <a href="{% url 'customer:notifications-inbox' %}">
+                                    <i class="icon-user"></i>
+                                    {% trans "Account" %}
+                                    <span class="label label-important">{{ num_unread_notifications }}</span>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'customer:summary' %}"><i class="icon-user"></i> {{ user.first_name|default:'Account' }}</a>
+                            {% endif %}
+                        </li>
+                        {% if user.is_staff or perms.partner.dashboard_access %}
+                            <li><a href="{% url 'dashboard:index' %}"><i class="icon-list-ul"></i> {% trans "Dashboard" %}</a></li>
+                        {% endif %}
+                        <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="icon-signout"></i> {% trans "Logout" %}</a></li>
+                    {% else %}
+                        <li><a id="login_link" href="{% url 'customer:login' %}"><i class="icon-signin"></i> {% trans "Login or register" %}</a></li>
+                    {% endif %}
                 </ul>
             {% endblock %}
         </div><!-- /navbar-collapse -->
